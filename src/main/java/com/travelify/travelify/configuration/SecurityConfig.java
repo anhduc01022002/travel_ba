@@ -31,7 +31,10 @@ public class SecurityConfig {
             "/api/auth/token",
             "/api/auth/introspect",
             "/api/auth/logout",
-            "/api/auth/verify-code"
+            "/api/auth/verify-code",
+            "/api/payment/create-payment-intent",
+            "/api/payment/confirm-payment",
+            "/api/payment/payment-status/**"
     };
 
     @Autowired

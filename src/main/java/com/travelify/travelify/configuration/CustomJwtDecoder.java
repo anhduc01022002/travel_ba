@@ -30,7 +30,6 @@ public class CustomJwtDecoder implements JwtDecoder {
     @Override
     public Jwt decode(String token) throws JwtException {
 
-        /// kiem tra token het han hay chua
         try {
             var response = authenticationService.introspect(IntrospectRequest.builder()
                             .token(token)

@@ -26,3 +26,7 @@ spring:
 
 jwt:
   signerKey: ${JWT_SIGNERKEY}
+
+stripe:
+  secret-key: ${STRIPE_SECRET_KEY}
+  public-key: ${STRIPE_PUBLIC_KEY}
