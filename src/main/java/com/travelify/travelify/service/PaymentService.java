@@ -18,7 +18,6 @@ public class PaymentService {
                 .setDescription(description)
                 .putMetadata("userId", userId)
                 .putMetadata("bookingId", bookingId)
-                .addPaymentMethodType("card")
                 .setAutomaticPaymentMethods(
                         PaymentIntentCreateParams.AutomaticPaymentMethods.builder()
                                 .setEnabled(true)
