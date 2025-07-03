@@ -34,7 +34,10 @@ public class SecurityConfig {
             "/api/auth/verify-code",
             "/api/payment/create-payment-intent",
             "/api/payment/confirm-payment",
-            "/api/payment/payment-status/**"
+            "/api/payment/payment-status/**",
+            "/api/hotels",
+            "/api/hotels/{id}",
+            "/api/hotels/search"
     };
 
     @Autowired
