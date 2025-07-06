@@ -12,9 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
-import org.springframework.security.oauth2.jwt.JwtDecoder;
-import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
@@ -34,11 +31,15 @@ public class SecurityConfig {
             "/api/auth/verify-code",
             "/api/payment/create-payment-intent",
             "/api/payment/confirm-payment",
-            "/api/payment/payment-status/**",
+            "/api/payment/payment-status/**"
+    };
+
+    private final String[] PUBLIC_GET_ENDPOINTS = {
             "/api/hotels",
-            "/api/hotels/{id}",
+            "/api/hotels/*",
             "/api/hotels/search"
     };
+
 
     @Autowired
     private CustomJwtDecoder customJwtDecoder;
@@ -48,6 +49,7 @@ public class SecurityConfig {
 
         httpSecurity.authorizeHttpRequests(request ->
                 request.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINT).permitAll()
+                .requestMatchers(HttpMethod.GET, PUBLIC_GET_ENDPOINTS).permitAll()
                 .anyRequest().authenticated());
 
         httpSecurity.oauth2ResourceServer(oauth2 ->

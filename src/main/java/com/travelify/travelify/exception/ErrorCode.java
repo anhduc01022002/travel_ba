@@ -15,7 +15,15 @@ public enum ErrorCode {
     USER_NOT_EXISTED(1006, "User not existed", HttpStatus.NOT_FOUND),
     UNAUTHENTICATED(1007, "Unauthenticated", HttpStatus.UNAUTHORIZED),
     UNAUTHORIZED(1008, "You do not have permission", HttpStatus.FORBIDDEN),
-    INVALID_OTP(1009, "Your OTP is invalid", HttpStatus.BAD_REQUEST)
+    INVALID_OTP(1009, "Your OTP is invalid", HttpStatus.BAD_REQUEST),
+
+    HOTEL_NOT_FOUND(2001, "Hotel not found", HttpStatus.NOT_FOUND),
+    HOTEL_NAME_REQUIRED(2002, "Hotel name is required", HttpStatus.BAD_REQUEST),
+    HOTEL_RATE_REQUIRED(2003, "Hotel rate is required", HttpStatus.BAD_REQUEST),
+    HOTEL_RATE_INVALID(2004, "Hotel rate must be positive", HttpStatus.BAD_REQUEST),
+    HOTEL_PRICE_REQUIRED(2005, "Hotel price is required", HttpStatus.BAD_REQUEST),
+    HOTEL_PRICE_INVALID(2006, "Hotel price must be positive", HttpStatus.BAD_REQUEST),
+    HOTEL_ADDRESS_REQUIRED(2007, "Hotel address is required", HttpStatus.BAD_REQUEST)
 
     ;
 

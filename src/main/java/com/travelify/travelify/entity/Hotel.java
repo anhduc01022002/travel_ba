@@ -1,39 +1,45 @@
 package com.travelify.travelify.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
 @Entity
 @Table(name = "hotels")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @Column(nullable = false)
-    private String name;
+    String name;
 
     @Column(name = "image_url")
-    @JsonProperty("image")
-    private String imageUrl;
+    String imageUrl;
 
-    private Double rate;
+    Double rate;
 
-    private Double price;
+    Double price;
 
     @Column(nullable = false)
-    @JsonProperty("address")
-    private String address;
+    String address;
 
     @ElementCollection
     @CollectionTable(name = "hotel_amenities", joinColumns = @JoinColumn(name = "hotel_id"))
     @Column(name = "amenity")
-    private List<String> amenities;
+    List<String> amenities;
 
-    private Boolean isAvailable;
+    @Column(name = "is_available")
+    Boolean isAvailable;
 
     @Column(columnDefinition = "TEXT")
-    private String description;
+    String description;
 }
