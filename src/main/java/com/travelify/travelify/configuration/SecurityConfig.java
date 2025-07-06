@@ -34,13 +34,6 @@ public class SecurityConfig {
             "/api/payment/payment-status/**"
     };
 
-    private final String[] PUBLIC_GET_ENDPOINTS = {
-            "/api/hotels",
-            "/api/hotels/*",
-            "/api/hotels/search"
-    };
-
-
     @Autowired
     private CustomJwtDecoder customJwtDecoder;
 
@@ -49,7 +42,6 @@ public class SecurityConfig {
 
         httpSecurity.authorizeHttpRequests(request ->
                 request.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINT).permitAll()
-                .requestMatchers(HttpMethod.GET, PUBLIC_GET_ENDPOINTS).permitAll()
                 .anyRequest().authenticated());
 
         httpSecurity.oauth2ResourceServer(oauth2 ->
