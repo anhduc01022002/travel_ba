@@ -6,10 +6,7 @@ import com.travelify.travelify.service.RoomService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,15 @@ public class RoomController {
         List<Room> rooms = roomService.getRoomsByHotelId(id);
         return ApiResponse.<List<Room>>builder()
                 .result(rooms)
+                .build();
+    }
+
+    @PostMapping("/{id}/rooms")
+    public ApiResponse<Room> createRoom(@PathVariable Long id, @RequestBody Room room) {
+        room.setHotelId(id); // Đặt hotelId cho phòng
+        Room savedRoom = roomService.saveRoom(room);
+        return ApiResponse.<Room>builder()
+                .result(savedRoom)
                 .build();
     }
 }
