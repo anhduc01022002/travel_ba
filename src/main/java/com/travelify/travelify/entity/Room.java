@@ -53,9 +53,6 @@ public class Room {
     @Column(name = "max_people")
     private int maxPeople;
 
-    @Column(name = "cancel_deadline")
-    private String cancelDeadline;
-
     @Column(name = "hotel_id")
     private Long hotelId;
 }
