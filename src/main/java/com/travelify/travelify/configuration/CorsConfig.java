@@ -1,6 +1,5 @@
 package com.travelify.travelify.configuration;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -13,11 +12,11 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.addAllowedOriginPattern("http://localhost:[0-9]+");
-        corsConfiguration.addAllowedOrigin("https://travel-ba.onrender.com");
-        corsConfiguration.addAllowedHeader("*");
-        corsConfiguration.addAllowedMethod("*");
+        corsConfiguration.setAllowCredentials(true); // Cho phép credentials nếu cần
+        corsConfiguration.addAllowedOrigin("http://localhost:3000"); // Thêm origin của React
+        corsConfiguration.addAllowedHeader("*"); // Cho phép tất cả header
+        corsConfiguration.addAllowedMethod("*"); // Cho phép tất cả method
+        corsConfiguration.addAllowedMethod("OPTIONS"); // Đảm bảo xử lý preflight
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
